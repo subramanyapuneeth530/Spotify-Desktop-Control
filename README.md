@@ -83,12 +83,133 @@ Create a file at:
 
 Example:
 
-```env
+```
 SPOTIFY_CLIENT_ID=your_client_id_here
 SPOTIFY_CLIENT_SECRET=your_client_secret_here
 SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
+```
+
+## Install & run
+
+This project consists of **two parts** that must be running together:
+
+1. A **FastAPI backend** (handles Spotify authentication and API calls)
+2. A **PySide6 desktop GUI** (user interface)
+
+Both are written in Python and can be run using the same virtual environment.
+
+---
+
+## Prerequisites
+
+- **Python 3.9 or higher**
+- A **Spotify account**
+- A **Spotify Developer App** with:
+  - Client ID
+  - Client Secret
+  - Redirect URI configured
+
+---
+
+## 1) Clone the repository
+
+```
+git clone https://github.com/your-username/spotify-desktop-control.git
+cd spotify-desktop-control
+```
+
+## 2) (Recommended) Create a virtual environment
+
+Using a virtual environment keeps project dependencies isolated and avoids conflicts with other Python projects.
+
+From the project root:
+
+```
+python -m venv venv
+```
+Activate the virtual environment:
+venv\Scripts\activate
+
+## 3) Install dependencies
+At this stage, the project uses a single Python environment for both the backend and the GUI.
+
+Install all required packages:
+```
+pip install fastapi uvicorn pydantic spotipy python-dotenv requests PySide6
+
+```
+
+## 4) Run the application (backend + GUI)
+
+You do **not** need to start the backend manually.
+
+The FastAPI backend is **started automatically** when the GUI application (`player.py`) is launched.
+
+From the project root (with your virtual environment activated):
+
+```
+cd GUI
+python player.py
+```
+What happens when you run this command:
+- The FastAPI backend is started programmatically in the background
+- Spotify OAuth authentication is handled automatically
+- The PySide6 desktop GUI window opens
+- The GUI communicates with the backend internally over HTTP
+
+## First run behavior
+
+On the first run:
+- A browser window may open asking you to log in to Spotify
+- You will be asked to authorize the application
+- A local Spotify token cache file will be created automatically
+- This only needs to happen once unless the token expires or is deleted.
+
+## Runtime notes
+
+Spotify playback controls require an active Spotify device
+- If nothing responds, open Spotify on any device and start playing a track once
+The backend runs locally and is tied to the GUI lifecycle
+- Closing the GUI will also stop the backend
+No additional servers or terminals are required
+
+## Stopping the application
+
+- Simply close the GUI window to shut down the application completely
+- No background processes will continue running
+
+## Troubleshooting
+Application opens but playback controls do not work
+- Ensure Spotify is open on at least one device
+- Start playback manually once before using the controls
+
+Spotify login / authorization fails
+- Verify your credentials in backend/.env
+- Ensure SPOTIFY_REDIRECT_URI matches exactly in the Spotify Developer Dashboard
+
+Application fails to start
+- Confirm your virtual environment is activated
+- Make sure all dependencies are installed
+- Run the application from the GUI/ directory
+
+## Project status
+
+This project is a work in progress and is expected to evolve.
+
+The current design prioritizes:
+- ease of use (single command to run everything)
+- simplicity over deployment complexity
+- flexibility for future upgrades
+
+Future improvements may include:
+- better startup/shutdown handling
+- background service mode
+- executable builds for non-technical users
+- improved error reporting
 
 
+## preview of the GUI:
 <img width="799" height="749" alt="image" src="https://github.com/user-attachments/assets/94dc5418-9845-4f22-948d-bbadd8add803" />
 
-preview video https://drive.google.com/file/d/1E66S_lMVRq_VChGsQv-voaRVJM5P58-x/view?usp=drive_link 
+## working demo:
+https://drive.google.com/file/d/1E66S_lMVRq_VChGsQv-voaRVJM5P58-x/view?usp=drive_link 
