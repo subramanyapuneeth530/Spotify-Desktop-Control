@@ -209,7 +209,8 @@ Future improvements may include:
 
 
 ## preview of the GUI:
-<img width="799" height="749" alt="image" src="https://github.com/user-attachments/assets/94dc5418-9845-4f22-948d-bbadd8add803" />
+![screen_record_1 - frame at 0m0s](https://github.com/user-attachments/assets/3ec8589e-e508-4c99-857c-0e9705fbafbb)
+
 
 ## working demo:
-https://drive.google.com/file/d/1E66S_lMVRq_VChGsQv-voaRVJM5P58-x/view?usp=drive_link 
+[https://drive.google.com/file/d/1E66S_lMVRq_VChGsQv-voaRVJM5P58-x/view?usp=drive_link ](https://drive.google.com/file/d/1egOn4gKI-aruCqKEZ1JBpMtx4fNpxH3h/view?usp=sharing)
